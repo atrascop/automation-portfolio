@@ -10,31 +10,34 @@ import { Image } from 'astro:assets';
   </h2>
   <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <li class="text-center mb-4">
-      <a href="https://www.inkdrop.app/">
-        <Image
-          class="border border-slate-300 dark:border-zinc-700 rounded-xl"
-          src="/inkdrop-banner.jpg"
-          width={720 * 2}
-          height={720}
-          alt="Inkdrop banner"
-        />
-        <div class="mt-3 text-xl">Inkdrop</div>
-        <div class="opacity-70">Markdown note-taking app</div>
+      <a href="https://nodejs.org/en" class="block">
+        <div class="w-full h-80 overflow-hidden border border-slate-300 dark:border-zinc-700 rounded-xl">
+          <Image
+            class="w-full h-full object-cover"
+            src="/banner.png"
+            width={720}
+            height={320}
+            alt="Inkdrop banner"
+          />
+        </div>
+        <div class="mt-3 text-xl">Node js</div>
+        <div class="opacity-70">JavaScript runtime environment that lets developers create servers, web apps, command line tools and scripts.</div>
       </a>
     </li>
     <li class="text-center mb-4">
-      <a href="https://astro.build/">
-        <Image
-          class="border border-slate-300 dark:border-zinc-700 rounded-xl"
-          src="/astrojs.jpg"
-          width={720 * 2}
-          height={720}
-          alt="AstroJS banner"
-        />
-
-        <div class="mt-3 text-xl">Astro</div>
+      <a href="https://pptr.dev/" class="block">
+        <div class="w-full h-80 overflow-hidden border border-slate-300 dark:border-zinc-700 rounded-xl">
+          <Image
+            class="w-full h-full object-cover"
+            src="/hero.png"
+            width={720}
+            height={320}
+            alt="AstroJS banner"
+          />
+        </div>
+        <div class="mt-3 text-xl">Puppeteer</div>
         <div class="opacity-70">
-          Framework for building fast static websites
+          Puppeteer is a JavaScript library which provides a high-level API to control Chrome or Firefox over the DevTools Protocol or WebDriver BiDi.
         </div>
       </a>
     </li>

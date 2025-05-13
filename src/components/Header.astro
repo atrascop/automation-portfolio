@@ -1,7 +1,7 @@
 ---
 import HeaderLink from './HeaderLink.astro'
 import { HOMEPAGE_URL } from '../config'
-import { IoLogoGithub } from 'react-icons/io5'
+import { MdEmail } from 'react-icons/md';
 import FootprintIcon from './icons/footprint'
 import ThemeToggle from './ThemeToggleButton'
 import DropdownMenu from './DropdownMenu'
@@ -20,16 +20,17 @@ allPosts.map(post => {
       <a href="/" class="group">
         <h2 class="font-semibold tracking-tighter p-2 font-mplus text-lg">
           <FootprintIcon />
-          Takuya Matsuyama
+          Med baghough
         </h2>
       </a>
       <div class="items-center gap-6 hidden md:flex">
-        <HeaderLink href={HOMEPAGE_URL}>About</HeaderLink>
+        <HeaderLink href={HOMEPAGE_URL}></HeaderLink>
         <HeaderLink
-          href="https://github.com/craftzdog/craftzdog-uses"
-          target="_blank"><IoLogoGithub />Source</HeaderLink
+         href="mailto:simozrt7@gmail.com?subject=Web Scraping Project Inquiry"
+          target="_blank"><MdEmail />Hire Me</HeaderLink
         >
       </div>
+      <!-- <a  class="button">Hire Me →</a> -->
       <div class="flex-1"></div>
       <ThemeToggle client:visible />
       <DropdownMenu client:visible tags={Array.from(allTags)} />
