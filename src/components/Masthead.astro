@@ -5,30 +5,56 @@ const baseAssetUrl = isProd
   : ''
 ---
 
-<section class="relative mb-6 h-80 flex justify-center items-center">
-  <div class="absolute w-full h-full overflow-hidden">
-    <video
-      class="absolute inset-0 min-w-full min-h-full object-cover opacity-30"
-      poster="/masthead-poster.jpg"
-      autoplay="autoplay"
-      muted="muted"
-      loop="loop"
-      playsinline
-      ><source
-        src={baseAssetUrl + '/head.webm'}
-        type="video/webm; codecs=vp9"
-      />
-      <source
-        src={baseAssetUrl + '/masthead.m4v'}
-        type="video/mp4; codecs=hvc1"
-      />C
-    </video>
+<section class="relative mb-10 min-h-[24rem] py-16 flex justify-center items-center overflow-hidden rounded-3xl border border-slate-700/50 shadow-2xl">
+  <!-- 1. Ambient Background Image (Increased Opacity & Removed Blur) -->
+  <div class="absolute inset-0 w-full h-full">
+    <img
+      class="w-full h-full object-cover opacity-70 scale-100 transition-transform duration-700 hover:scale-105"
+      src={baseAssetUrl + '/bg.jpg'}
+      alt="Automation background pattern"
+    />
+    <!-- Subtle Gradient Overlay to ensure contrast only where needed -->
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-slate-950/20 to-slate-950/50 dark:from-zinc-950/50 dark:via-zinc-950/30 dark:to-zinc-950/60"></div>
   </div>
-  <div class="z-10 text-center px-8 drop-shadow-lg shadow-black">
-    <div class="uppercase text-sm mb-4">Welcome to</div>
-    <div class="text-4xl font-mplus font-medium">
-     Automate Data Collection—Without Getting Blocked width <span class="text-green-500 font-black">puppeteer</span>
-    
-    and <span class="text-[#F36C3D] font-black">n8n</span></div>
+
+  <!-- 2. Soft Glowing Lighting Orbs (Boosted for contrast behind image) -->
+  <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-72 h-72 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute top-1/2 right-1/4 -translate-y-1/2 w-72 h-72 bg-[#F36C3D]/20 rounded-full blur-3xl pointer-events-none"></div>
+
+  <!-- 3. Glassmorphic Card Container -->
+  <div class="relative z-10 mx-4 max-w-3xl w-full group">
+    <!-- Gradient Border Accent Wrapper -->
+    <div class="relative p-[1px] rounded-2xl bg-gradient-to-r from-emerald-500/50 via-slate-600/40 to-[#F36C3D]/50 transition-all duration-500 group-hover:from-emerald-400 group-hover:to-[#F36C3D] shadow-2xl">
+      
+      <!-- Card Content (Solid high-blur glass to protect readability over the bright image) -->
+      <div class="px-6 py-8 sm:px-12 sm:py-12 text-center rounded-2xl bg-slate-950/85 dark:bg-zinc-950/85 backdrop-blur-xl transition-all duration-500 group-hover:bg-slate-950/75 dark:group-hover:bg-zinc-950/75">
+        
+        <!-- Animated Badge -->
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold uppercase tracking-widest text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 shadow-inner">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          Automation Architecture
+        </div>
+
+        <!-- Headline -->
+        <h1 class="text-2xl sm:text-3xl md:text-4xl font-mplus font-bold leading-[1.25] text-white tracking-tight">
+          Automate Data Collection—Without Getting Blocked with 
+          <span class="inline-block bg-gradient-to-r from-emerald-400 to-green-500 bg-clip-text text-transparent font-black drop-shadow-[0_2px_10px_rgba(52,211,153,0.3)]">
+            puppeteer
+          </span> 
+          and
+           <span class="inline-block bg-gradient-to-r from-orange-600 to-red-700 bg-clip-text text-transparent font-black drop-shadow-[0_2px_10px_rgba(52,211,153,0.3)]">
+            nodriver
+          </span> 
+          and 
+          <span class="inline-block bg-gradient-to-r from-[#c91c55] to-pink-600 bg-clip-text text-transparent font-black drop-shadow-[0_2px_10px_rgba(243,108,61,0.3)]">
+            n8n
+          </span>
+        </h1>
+        
+      </div>
+    </div>
   </div>
 </section>

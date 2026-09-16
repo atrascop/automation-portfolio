@@ -15,75 +15,73 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg
 console.log('images:', images)
 
 const posts = (await Astro.glob('./posts/*.md')).sort(
-  (a: any, b: any) =>
-    new Date(b.frontmatter.createdAt).valueOf() -
-    new Date(a.frontmatter.createdAt).valueOf()
+  (a: any, b: any) => {
+    // Put the n8n post first
+    if (a.frontmatter.slug === 'n8n-lead-gen') return -1
+    if (b.frontmatter.slug === 'n8n-lead-gen') return 1
+
+    // Keep the remaining posts sorted by date
+    return (
+      new Date(b.frontmatter.createdAt).valueOf() -
+      new Date(a.frontmatter.createdAt).valueOf()
+    )
+  }
 )
----
+---<
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
+<head> 
+  <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
   <Body>
     <Header title={SITE_TITLE} />
     <main class="pt-[56px]">
       <Masthead />
       <Content>
         <h1 class="text-3xl p-2 font-bold"></h1>
-        <section>
-          <p class="mb-8 indent-4">
-            
-            " I help businesses like yours extract critical data (leads, pricing, inventory) from websites—even with CAPTCHAs or rate limits. My systems use Puppeteer, proxy networks, and AI solvers to run millions of requests flawlessly. Here’s how it helps you:
+<section class="font-['Inter'] text-[17px] leading-8"> <p class="mb-8"> I build custom automation systems that help businesses collect, synchronize, and manage data without repetitive manual work. </p> <p class="mb-8"> My work focuses on <strong>browser automation, API integrations, web scraping,</strong> and <strong>automated data synchronization</strong> using tools like Puppeteer, Playwright, Node.js, and third-party APIs. </p> <p class="mb-8"> For e-commerce, I build systems that connect <strong>Shopify, delivery services, advertising platforms,</strong> and internal dashboards to automate orders, inventory, sales, and performance data. </p> <p class="mb-8"> I also build browser automations for tasks such as <strong>data extraction, monitoring, and appointment availability alerts</strong>, including workflows that interact with websites where standard API access isn't available. </p> <p class="mb-8"> Every solution is adapted to the specific website, workflow, and business requirements. </p> </section>
+       <section> 
+  <ul class="grid grid-cols-1 md:grid-cols-2 gap-4"> 
+    { 
+      posts.map(post => { 
+        const heroImageAsset = images[post.frontmatter.heroImage]
+        const heroImageSrc = heroImageAsset ? heroImageAsset() : post.frontmatter.heroImage
 
-For E-commerce: Automatically track competitors’ prices without manual scraping.
+        return ( 
+          <li class="text-center mb-4"> 
+            <a href={post.url}> 
+              <Image 
+                class="w-full h-[220px] object-cover border border-slate-300 dark:border-zinc-700 rounded-xl"
+                src={heroImageSrc}
+                width={720}
+                height={405}
+                alt="Thumbnail"
+              />
 
-For Artists/Galleries: Scrape collector leads from directories 24/7.
+              <div class="mt-3 text-xl font-bold"> 
+                {post.frontmatter.title} 
+              </div>
 
-For Marketers: Build targeted prospect lists from LinkedIn, avoiding blocks.
-
-*Every solution is custom-tuned for your targets and scale. Below are real-world automations I’ve built—each saving clients 10+ hours/week.*"
- My systems use Puppeteer
-            <a
-              class="inline-flex items-center gap-1 indent-1 text-green-500"
-              href={HOMEPAGE_URL1}
-              > Puppeteer
-            </a>
-            , proxy networks, and AI solvers..
-          </p>
-        </section>
-        <section>
-          <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {
-              posts.map(post => {
-                const heroImageAsset = images[post.frontmatter.heroImage]
-                const heroImageSrc =  heroImageAsset ? heroImageAsset() : post.frontmatter.heroImage
-                return (
-                <li class="text-center mb-4">
-                  <a href={post.url}>
-                    <Image
-                      class="border border-slate-300 dark:border-zinc-700 rounded-xl"
-                      src={heroImageSrc}
-                      width={720}
-                      height={720 / 1.777}
-                      alt="Thumbnail"
-                    />
-                    <div class="mt-3 text-xl font-bold">
-                      {post.frontmatter.title}
-                    </div>
-                    {post.frontmatter.description && (
-                      <div class="opacity-70">
-                        {post.frontmatter.description}
-                      </div>
-                    )}
-                  </a>
-                </li>
-              )
-              })
-            }
-          </ul>
-        </section>
+              {post.frontmatter.description && ( 
+                <div class="opacity-70"> 
+                  {post.frontmatter.description} 
+                </div> 
+              )} 
+            </a> 
+          </li> 
+        ) 
+      }) 
+    } 
+  </ul> 
+</section>
         <CreatedWithSection />
       </Content>
     </main>

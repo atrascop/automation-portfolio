@@ -8,13 +8,13 @@ updatedAt: 1714113668883
 tags:
   - 'n8n'
 
-heroImage: '/img/n8n-workflow.png'
+heroImage: '/tesr.jpg'
 slug: 'n8n-lead-gen'
 ---
 
 <h1></h1>
 
-![Workflow](/img/n8n-workflow.png)
+![Workflow](/n8n-logo.png)
 
 In the growing world of automation, **n8n** is quickly becoming a favorite among developers and businesses for its flexibility and open-source power. In this article, I’ll walk you through a practical n8n workflow that automates **lead generation**, using Gmail and Google Sheets.
 
@@ -42,6 +42,6 @@ This workflow is a powerful demo of:
 ✅ Real-time Google Sheets syncing  
 ✅ Scalable client management
 
----
-
 By combining n8n with Google’s ecosystem, you can build **smart, no-code/low-code automations** that save hours of manual work and streamline business processes.
+
+---
